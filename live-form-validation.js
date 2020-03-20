@@ -474,6 +474,25 @@ return LiveForm;
 	};
 
 
+
+
+	/**
+	 * Attaches a handler to an event for the element.
+	 */
+	Nette.addEvent = function(element, on, callback) {
+		if (element.addEventListener) {
+			element.addEventListener(on, callback);
+		} else if (on === 'DOMContentLoaded') {
+			element.attachEvent('onreadystatechange', function() {
+				if (element.readyState === 'complete') {
+					callback.call(this);
+				}
+			});
+		} else {
+			element.attachEvent('on' + on, getHandler(callback));
+		}
+	};
+
 	/**
 	 * Returns the value of form element.
 	 */
