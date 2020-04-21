@@ -1,5 +1,4 @@
 # Live Form Validation
-
 :no_entry: Nice client-side live form validation for Nette Forms 2.4.
 
 -----
